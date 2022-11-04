@@ -1,0 +1,25 @@
+{
+  "name": "genfanad-scripting-tools",
+  "version": "1.0.0",
+  "description": "Genfanad is a brand new game based on classic games of the past. http://genfanad.com/ If you're interested in playing or developing for it, please come join our discord at https://discord.gg/uN3Vvsv",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/genfanad/genfanad-scripting-tools.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/genfanad/genfanad-scripting-tools/issues"
+  },
+  "homepage": "https://github.com/genfanad/genfanad-scripting-tools#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "fs-extra": "^8.1.0",
+    "npm": "^6.14.8",
+    "request": "^2.88.0"
+  }
+}

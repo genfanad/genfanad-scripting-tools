@@ -1,0 +1,111 @@
+<html>
+	<head>
+        <meta charset=utf-8>
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+        <link rel="stylesheet" href="lib/codemirror.css">
+        <link rel="stylesheet" href="ide/ide.css">
+        <link rel="stylesheet" href="ide/easyui.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+        <script src="lib/codemirror.js"></script>
+
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+
+        <script src="ide/jquery.easyui.min.js"></script>
+        <script src="ide/datagrid-cellediting.js"></script>
+        <script src="ide/compiler2.js"></script>
+        <script src="ide/scripts.js"></script>
+    </head>
+
+    <body>
+        <div class="easyui-layout" style="width:100%;height:100%;">
+            <div data-options="region:'north'" style="height:50px">
+                <input type='button' value='Run Script' onclick='runStart()' />
+                <input type='button' value='Step' onclick='runStep()' />
+                |
+                <input type='button' value='Snapshot State' onclick='stateSnapshot()' />
+                <input type='button' value='Restore State' onclick='stateRestore()' />
+                |
+                <input id='filename' value='' size=80 />
+                <input type='button' value='Save' onclick='saveFile()' />
+            </div>
+            <div data-options="region:'west',split:true" title="Files" style="width:25%">
+                <ul id='files' class="easyui-tree">
+                </ul>
+            </div>
+            <div data-options="region:'east',split:true" style="width:25%">
+                <div class="easyui-layout" style="height:100%">
+                    <div data-options="region:'north', split:true" style="height:40%">
+                        <div class="easyui-tabs" data-options="fit:true">
+                            <div id='variables' title="Variables" data-options="fit:true">
+
+<table id="vartable" class='easyui-propertygrid' style="width: 100%">
+</table>
+
+<input type='button' value='Add Variable' onclick='addVariable()'/>
+<input type='button' value='Delete Selected' onclick='deleteVariable()'/>
+
+                            </div>
+                            <div id='inventory' title="Inventory" data-options="fit:true">
+Max 30 items.
+<table id="itemtable" class='easyui-datagrid' singleSelect="true">
+<thead>
+    <tr>
+        <th data-options="field:'item',width:80">Item</th>
+        <th data-options="field:'name',width:100">Name</th>
+        <th data-options="field:'stackable',width:20">Stack</th>
+        <th data-options="field:'quantity',width:60,editor:'numberbox'">Quantity</th>
+    </tr>
+</thead>
+</table>
+<select id="itemlist">
+    <option value="none" />None</option>
+</select>
+<input type='button' value='Add Item' onclick='addItem()'/>
+<input type='button' value='Remove 0-count' onclick='updateItem()'/>
+
+                            </div>
+                            <div id='skills' title="Skills" data-options="fit:true">
+<table id="skilltable" class='easyui-propertygrid' style="width: 100%">
+</table>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-options="region:'center'">
+                        <div id='run_state'>Not running.</div>
+                        <div id='run_history'>
+
+                        </div>
+                    </div>
+                    <div data-options="region:'south'" style='height:20%'>
+                        <div id='run_speaker'></div>
+                        <div id='run_message'></div>
+                        <div id='run_actions'>
+                            <div id='run_action_continue'><a href='#' onclick='runContinue()'>Continue...</a></div>
+                            <div id='run_action_choice'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-options="region:'center'">
+                <div id='code-tabs' class="easyui-tabs" data-options="fit:true">
+                    <div title="Code" data-options="fit:true">
+                        <textarea data-options="fit:true" id='code'></textarea>
+                    </div>
+                    <div title="Compiled">
+                        <textarea data-options="fit:true" id='compiled' readonly></textarea>
+                    </div>
+                </div>
+            </div>
+            <div data-options="region:'south',split:true" style="height:50px">
+                <div id='compiler-status'>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

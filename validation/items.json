@@ -1,0 +1,10 @@
+{
+  "example-item": {
+    "stackable": true,
+    "examine": "This is a joke. Please laugh.",
+    "name": "Example",
+    "sellable": true,
+    "tradeable": true,
+    "value": 10
+  }
+}
