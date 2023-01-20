@@ -525,7 +525,7 @@ function giveItem(id, quantity = 1) {
     let found = false;
     for (let i of items) {
         if (i.item == id && i.stackable) {
-            i.quantity += Number(quantity);
+            i.quantity = Number(i.quantity) + Number(quantity);
             found = true;
         }
     }
