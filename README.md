@@ -237,6 +237,15 @@ Takes an item from the inventory. This assumes you have checked for the player h
     takeitem smithed-weapon-bronze-dagger // Quantity is omitted and does not
                                           // work for unstackable items.
 
+### Removing All items of <name>
+This will remove all of an item and always continue on, regardless of how many of the item are removed.
+
+take_all_items item-foo-bar item-foo-baz
+has_any_item item-foo-bar item-foo-baz
+  true -> label1
+  false -> label2
+end
+
 ### Branching [hasitem]
 Checks to see if a player has an item and jumps to a label if they do. Quantity required for stackable items.
 
